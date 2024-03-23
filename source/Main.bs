@@ -97,14 +97,24 @@ sub Main (args as dynamic) as void
     device.EnableAudioGuideChangedEvent(true)
 
     ' Check if we were sent content to play with the startup command (Deep Link)
-    if isValidAndNotEmpty(args.mediaType) and isValidAndNotEmpty(args.contentId)
+    if true or (isValidAndNotEmpty(args.mediaType) and isValidAndNotEmpty(args.contentId))
 
         deepLinkVideo = {
-            id: args.contentId,
+            ' id: args.contentId,
+            id: "d3c4dd11a3b10ecf1c0df442a898d17b",
             type: "video"
         }
 
         m.global.queueManager.callFunc("push", deepLinkVideo)
+
+        deepLinkVideo = {
+            ' id: args.contentId,
+            id: "79553fc167c1121156cfb35f73c121c1",
+            type: "video"
+        }
+
+        m.global.queueManager.callFunc("push", deepLinkVideo)
+
         m.global.queueManager.callFunc("playQueue")
     end if
 
