@@ -349,6 +349,7 @@ sub bufferCheck(msg)
 
 end sub
 
+'
 ' availSubtitleTrackIdx: Returns Roku's index for requested subtitle track
 '
 ' @param {string} tracknameToFind - TrackName for subtitle we're looking to match
