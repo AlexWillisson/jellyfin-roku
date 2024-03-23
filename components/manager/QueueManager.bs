@@ -163,7 +163,6 @@ end sub
 
 ' Remove item at end of play queue
 sub pop()
-    print("pop!")
     m.queue.pop()
     m.queueTypes.pop()
 end sub
