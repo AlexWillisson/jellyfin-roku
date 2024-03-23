@@ -92,6 +92,7 @@ sub popScene()
         end if
     else
         ' Exit app if for some reason we don't have anything on the stack
+        print("nothing on stack, exiting scene")
         m.scene.exit = true
     end if
 
@@ -119,6 +120,7 @@ sub popScene()
         end if
     else
         ' Exit app if the stack is empty after removing group
+        print("exit if we just emptied stack by removing last group")
         m.scene.exit = true
     end if
     stopLoadingSpinner()

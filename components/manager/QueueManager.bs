@@ -115,9 +115,6 @@ end function
 sub playQueue()
     m.isPlaying = true
     nextItem = getCurrentItem()
-    print("==================================")
-    print(nextItem)
-    print("==================================")
     if not isValid(nextItem) then return
 
     nextItemMediaType = getItemType(nextItem)
@@ -166,6 +163,7 @@ end sub
 
 ' Remove item at end of play queue
 sub pop()
+    print("pop!")
     m.queue.pop()
     m.queueTypes.pop()
 end sub

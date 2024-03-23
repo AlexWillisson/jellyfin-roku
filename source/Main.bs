@@ -47,10 +47,10 @@ sub Main (args as dynamic) as void
     sceneManager.callFunc("clearScenes")
 
     ' load home page
-    group = CreateHomeGroup()
-    group.callFunc("loadLibraries")
-    stopLoadingSpinner()
-    sceneManager.callFunc("pushScene", group)
+    ' group = CreateHomeGroup()
+    ' group.callFunc("loadLibraries")
+    ' stopLoadingSpinner()
+    ' sceneManager.callFunc("pushScene", group)
 
     m.scene.observeField("exit", m.port)
 
@@ -109,11 +109,19 @@ sub Main (args as dynamic) as void
 
         deepLinkVideo = {
             ' id: args.contentId,
-            id: "79553fc167c1121156cfb35f73c121c1",
+            id: "d3c4dd11a3b10ecf1c0df442a898d17b",
             type: "video"
         }
 
         m.global.queueManager.callFunc("push", deepLinkVideo)
+
+        ' deepLinkVideo = {
+        '     ' id: args.contentId,
+        '     id: "79553fc167c1121156cfb35f73c121c1",
+        '     type: "video"
+        ' }
+
+        ' m.global.queueManager.callFunc("push", deepLinkVideo)
 
         m.global.queueManager.callFunc("playQueue")
     end if
@@ -123,7 +131,9 @@ sub Main (args as dynamic) as void
     ' "group" is always "whats on the screen"
     ' m.scene's children is the "previous view" stack
     while true
+        print("loop!")
         msg = wait(0, m.port)
+        print(msg)
         if type(msg) = "roSGScreenEvent" and msg.isScreenClosed()
             print "CLOSING SCREEN"
             return

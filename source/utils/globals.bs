@@ -118,7 +118,8 @@ sub SaveDeviceToGlobal()
             locale: deviceInfo.GetCurrentLocale(),
             clockFormat: deviceInfo.GetClockFormat(),
             isAudioGuideEnabled: deviceInfo.IsAudioGuideEnabled(),
-            hasVoiceRemote: deviceInfo.HasFeature("voice_remote"),
+            ' hasVoiceRemote: deviceInfo.HasFeature("voice_remote"),
+            hasVoiceRemote: false,
 
             displayType: deviceInfo.GetDisplayType(),
             displayMode: deviceInfo.GetDisplayMode(),

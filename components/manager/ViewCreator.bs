@@ -215,7 +215,9 @@ end sub
 
 ' Playback state change event handlers
 sub onStateChange()
+    print("onStateChange")
     if LCase(m.view.state) = "finished"
+        print("onStateChange finished")
         ' Close any open dialogs
         if m.global.sceneManager.callFunc("isDialogOpen")
             m.global.sceneManager.callFunc("dismissDialog")
@@ -229,6 +231,7 @@ sub onStateChange()
             return
         end if
 
+        print("playback complete in onStateChange")
         ' Playback completed, return user to previous screen
         m.global.sceneManager.callFunc("popScene")
         m.global.audioPlayer.loopMode = ""
