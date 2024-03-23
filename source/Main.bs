@@ -99,6 +99,19 @@ sub Main (args as dynamic) as void
     ' Check if we were sent content to play with the startup command (Deep Link)
     if true or (isValidAndNotEmpty(args.mediaType) and isValidAndNotEmpty(args.contentId))
 
+        query = {
+            "userId": "d66228381c36428aa3df128bae95b834",
+            "fields": "Path"
+        }
+
+        req = APIRequest(Substitute("Playlists/{0}/Items", "f36a30c122118c1b173e9129a8787c37"), query)
+        jsonResponse = getJson(req)
+
+        if jsonResponse <> invalid and jsonResponse.AccessToken <> invalid and jsonResponse.User <> invalid
+            print(jsonResponse)
+        end if
+
+
         deepLinkVideo = {
             ' id: args.contentId,
             id: "d3c4dd11a3b10ecf1c0df442a898d17b",
@@ -109,7 +122,7 @@ sub Main (args as dynamic) as void
 
         deepLinkVideo = {
             ' id: args.contentId,
-            id: "d3c4dd11a3b10ecf1c0df442a898d17b",
+            id: "95e48414d5e33bf982b65f2b4bd98946",
             type: "video"
         }
 
@@ -131,9 +144,7 @@ sub Main (args as dynamic) as void
     ' "group" is always "whats on the screen"
     ' m.scene's children is the "previous view" stack
     while true
-        print("loop!")
         msg = wait(0, m.port)
-        print(msg)
         if type(msg) = "roSGScreenEvent" and msg.isScreenClosed()
             print "CLOSING SCREEN"
             return
